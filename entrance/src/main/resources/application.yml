@@ -1,0 +1,24 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /modules
+spring:
+  profiles:
+    active: common,dao,service
+  datasource:
+    druid:
+      username: root
+      password: root
+      url: jdbc:mysql://localhost:13306/reggie?useUnicode=true&useSSL=false&characterEncoding=utf-8
+      driver-class-name: com.mysql.jdbc.Driver
+
+mybatis-plus:
+  configuration:
+    #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID
+  #加载对应的xml文件
+  mapper-locations: classpath:mappr/*/*.xml
